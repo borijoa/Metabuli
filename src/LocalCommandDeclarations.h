@@ -27,5 +27,6 @@ extern int editNames(int argc, const char **argv, const Command& command);
 extern int createnewtaxalist(int argc, const char **argv, const Command& command);
 extern int classifiedRefiner(int argc, const char **argv, const Command& command);
 extern int prodigal(int argc, const char **argv, const Command& command);
+extern int uniquekmer(int argc, const char **argv, const Command &command);
 
 #endif //ADCLASSIFIER2_LOCALCOMMANDDECLARATIONS_H
