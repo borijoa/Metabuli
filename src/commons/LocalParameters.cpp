@@ -623,8 +623,9 @@ LocalParameters::LocalParameters() :
     classifiedRefiner.push_back(&RANK);
     classifiedRefiner.push_back(&HIGHER_RANK_FILE);
     classifiedRefiner.push_back(&PARAM_THREADS);
-    
 
+    //prodigal
+    prodigal.push_back(&PARAM_THREADS);
 }
 
 void LocalParameters::printParameters(const std::string &module, int argc, const char* pargv[],

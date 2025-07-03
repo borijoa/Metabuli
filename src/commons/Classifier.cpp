@@ -148,7 +148,7 @@ void Classifier::startClassify(const LocalParameters &par) {
     reporter->closeReadClassificationFile();
 
     // Write report files, default: krona not included
-    reporter->writeReportFile(totalSeqCnt, taxCounts, false);
+    reporter->writeReportFile(totalSeqCnt, taxCounts);
 
     // Memory deallocation
     free(matchBuffer.buffer);

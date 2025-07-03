@@ -43,6 +43,7 @@ public:
     std::vector<MMseqsParameter*> editNames;
     std::vector<MMseqsParameter*> createnewtaxalist;
     std::vector<MMseqsParameter*> classifiedRefiner;
+    std::vector<MMseqsParameter*> prodigal;
     
 
     // Superkingdom taxonomy id
@@ -124,6 +125,8 @@ public:
     PARAMETER(REPORT)
     PARAMETER(RANK)
     PARAMETER(HIGHER_RANK_FILE)
+
+    // prodigal
 
 
 

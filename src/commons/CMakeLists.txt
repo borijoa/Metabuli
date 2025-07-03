@@ -37,4 +37,6 @@ set(commons_source_files
 		commons/Reporter.cpp
 		commons/TaxonomyWrapper.h
 		commons/TaxonomyWrapper.cpp
+		commons/prodigal.cpp
+		commons/prodigal.h
         PARENT_SCOPE)

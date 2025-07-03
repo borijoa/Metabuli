@@ -100,6 +100,9 @@ public:
     int fillBufferWithKmerFromBlock(const PredictedBlock &block, const char *seq, TargetKmerBuffer &kmerBuffer,
                                      size_t &posToWrite, int seqID, int taxIdAtRank, const vector<int> & aaSeq);
 
+    int fillBufferWithKmerFromBlockGene(const PredictedBlock &block, const char *seq, FuncKmerBuffer &kmerBuffer,
+                                         size_t &posToWrite, int seqID, int taxIdAtRank, int gene, const vector<int> & aaSeq);
+
     int fillBufferWithKmerFromBlock(const char *seq,
                                     TargetKmerBuffer &kmerBuffer,
                                     size_t &posToWrite,

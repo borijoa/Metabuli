@@ -72,6 +72,6 @@ public:
     ProdigalWrapper();
     ~ProdigalWrapper();
     void getExtendedORFs(struct _gene *genes, struct _node *nodes, std::vector<PredictedBlock> &blocks, size_t numOfGene,
-            size_t length, size_t &numOfBlocks, std::vector<uint64_t> &intergenicKmerList, const char *seq);    
+        size_t length, size_t &numOfBlocks, std::vector<uint64_t> &intergenicKmerList, const char *seq);
 };
 #endif //ADCLASSIFIER2_PRODIGALWRAPPER_H

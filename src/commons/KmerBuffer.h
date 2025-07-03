@@ -5,6 +5,15 @@
 #include "Util.h"
 #include <cstdint>
 
+struct FuncKmer{
+    FuncKmer(): seqId(0), taxIdAtRank(0), ADkmer(0), gene(0) {};
+    FuncKmer(uint64_t ADkmer, TaxID taxIdAtRank, int seqId, int gene)
+        : seqId(seqId), taxIdAtRank(taxIdAtRank), ADkmer(ADkmer), gene(gene) {}
+    TaxID seqId; // 4 byte
+    TaxID taxIdAtRank; // 4 byte
+    uint64_t ADkmer; // 8 byte
+    int gene;
+};
 
 class QueryKmerBuffer{
 private:
@@ -77,4 +86,43 @@ public:
     }
 
 };
+
+class FuncKmerBuffer{
+    private:
+    
+    public:
+        FuncKmer * buffer;
+        size_t startIndexOfReserve;
+        size_t bufferSize;
+        explicit FuncKmerBuffer(size_t sizeOfBuffer){
+            if(sizeOfBuffer == 0){
+                buffer = (FuncKmer *) calloc(sizeOfBuffer, sizeof(FuncKmer));
+                bufferSize = getFuncKmerBufferSize();
+            } else {
+                buffer = (FuncKmer *) calloc(sizeOfBuffer, sizeof(FuncKmer));
+                bufferSize = sizeOfBuffer;
+            }
+            startIndexOfReserve = 0;
+        };
+    
+        size_t reserveMemory(size_t numOfKmer){
+            size_t offsetToWrite = __sync_fetch_and_add(&startIndexOfReserve, numOfKmer);
+            return offsetToWrite;
+        };
+    
+        ~FuncKmerBuffer(){
+            free(buffer);
+        }
+    
+        static size_t getFuncKmerBufferSize(){
+            size_t memLimit = Util::getTotalSystemMemory() * 0.5;
+            size_t bufferSize = memLimit / sizeof(FuncKmer);
+            std::cout << Util::getTotalSystemMemory() << std::endl;
+            if(bufferSize > 10000000000){
+                bufferSize = 10000000000;
+            }
+            return bufferSize;
+        }
+    
+    };
 #endif //ADCLASSIFIER2_KMERBUFFER_H
